@@ -20,7 +20,7 @@ namespace A2.Data
             return us;
         }
 
-        public bool ValidLogin(string username, string password)
+        public bool LoginCheck(string username, string password)
         {
             User user = _dbContext.Users.FirstOrDefault(e => e.UserName == username && e.Password == password);
 
@@ -70,6 +70,14 @@ namespace A2.Data
             }
         }
 
+        public GameRecord AddToGameRecord(GameRecord gameRecord)
+        {
+            EntityEntry<GameRecord> e = _dbContext.GameRecords.Add(gameRecord);
+            GameRecord g = e.Entity;
+            _dbContext.SaveChanges();
+            return g;
+        }
+
         public IEnumerable<GameRecord> GetGameRecords()
         {
             IEnumerable<GameRecord> allGameRecords = _dbContext.GameRecords.ToList();
@@ -80,14 +88,6 @@ namespace A2.Data
         {
             GameRecord game = _dbContext.GameRecords.FirstOrDefault(e => e.GameId == id);
             return game;
-        }
-
-        public GameRecord AddToGameRecord(GameRecord gameRecord)
-        {
-            EntityEntry<GameRecord> e = _dbContext.GameRecords.Add(gameRecord);
-            GameRecord g = e.Entity;
-            _dbContext.SaveChanges();
-            return g;
         }
 
         public void UpdateGameRecord(GameRecord gameRecord)

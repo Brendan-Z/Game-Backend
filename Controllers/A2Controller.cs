@@ -95,41 +95,41 @@ namespace A2.Controllers
             Claim c = ci.FindFirst("userName");
             string username = c.Value;
 
-            GameRecord userCurrentGame = _repository.GetGameById(gamemove.GameId);
+            GameRecord userGameRecord = _repository.GetGameById(gamemove.GameId);
 
-            if (userCurrentGame == null)
+            if (userGameRecord == null)
             {
                 return Ok("no such gameId");
             }
-            else if (userCurrentGame.State.Equals("wait") && userCurrentGame.Player1 == username)
+            else if (userGameRecord.State.Equals("wait") && userGameRecord.Player1 == username)
             {
                 return Ok("You do not have an opponent yet.");
             }
-            else if (userCurrentGame.Player1.Equals(username))
+            else if (userGameRecord.Player1.Equals(username))
             {
-                if (userCurrentGame.LastMovePlayer1 != null)
+                if (userGameRecord.LastMovePlayer1 != null)
                 {
                     return Ok("It is not your turn.");
                 }
                 else
                 {
-                    userCurrentGame.LastMovePlayer1 = gamemove.Move;
-                    userCurrentGame.LastMovePlayer2 = null;
-                    _repository.UpdateGameRecord(userCurrentGame);
+                    userGameRecord.LastMovePlayer1 = gamemove.Move;
+                    userGameRecord.LastMovePlayer2 = null;
+                    _repository.UpdateGameRecord(userGameRecord);
                     return Ok("move registered");
                 }
             }
-            else if (userCurrentGame.Player2.Equals(username))
+            else if (userGameRecord.Player2.Equals(username))
             {
-                if (userCurrentGame.LastMovePlayer2 != null)
+                if (userGameRecord.LastMovePlayer2 != null)
                 {
                     return Ok("It is not your turn.");
                 }
                 else
                 {
-                    userCurrentGame.LastMovePlayer2 = gamemove.Move;
-                    userCurrentGame.LastMovePlayer1 = null;
-                    _repository.UpdateGameRecord(userCurrentGame);
+                    userGameRecord.LastMovePlayer2 = gamemove.Move;
+                    userGameRecord.LastMovePlayer1 = null;
+                    _repository.UpdateGameRecord(userGameRecord);
                     return Ok("move registered");
                 }
             }
@@ -150,36 +150,36 @@ namespace A2.Controllers
             Claim c = ci.FindFirst("userName");
             string username = c.Value;
 
-            GameRecord currentGame = _repository.GetGameById(gameId);
+            GameRecord gameRecord = _repository.GetGameById(gameId);
 
-            if (currentGame == null)
+            if (gameRecord == null)
             {
                 return Ok("no such gameId");
             }
-            else if (currentGame.State.Equals("wait") && currentGame.Player1 == username)
+            else if (gameRecord.State.Equals("wait") && gameRecord.Player1 == username)
             {
                 return Ok("You do not have an opponent yet.");
             }
-            else if (currentGame.Player1.Equals(username))
+            else if (gameRecord.Player1.Equals(username))
             {
-                if (currentGame.LastMovePlayer2 == null)
+                if (gameRecord.LastMovePlayer2 == null)
                 {
                     return Ok("Your opponent has not moved yet.");
                 }
                 else
                 {
-                    return Ok(currentGame.LastMovePlayer2);
+                    return Ok(gameRecord.LastMovePlayer2);
                 }
             }
-            else if (currentGame.Player2.Equals(username))
+            else if (gameRecord.Player2.Equals(username))
             {
-                if (currentGame.LastMovePlayer1 == null)
+                if (gameRecord.LastMovePlayer1 == null)
                 {
                     return Ok("Your opponent has not moved yet.");
                 }
                 else
                 {
-                    return Ok(currentGame.LastMovePlayer1);
+                    return Ok(gameRecord.LastMovePlayer1);
                 }
             }
             else
@@ -200,23 +200,23 @@ namespace A2.Controllers
             Claim c = ci.FindFirst("userName");
             string username = c.Value;
 
-            GameRecord currentGame = _repository.GetGameById(gameId);
+            GameRecord gameRecord = _repository.GetGameById(gameId);
 
-            if (currentGame == null)
+            if (gameRecord == null)
             {
                 return Ok("no such gameId");
             }
-            else if (!currentGame.Player1.Equals(username) && !currentGame.Player2.Equals(username))
+            else if (!gameRecord.Player1.Equals(username) && !gameRecord.Player2.Equals(username))
             {
                 return Ok("not your game id");
             }
-            else if (currentGame.State.Equals("wait") && currentGame.Player1.Equals(username))
+            else if (gameRecord.State.Equals("wait") && gameRecord.Player1.Equals(username))
             {
                 return Ok("You have not started a game.");
             }
             else
             {
-                _repository.RemoveGameRecord(currentGame);
+                _repository.RemoveGameRecord(gameRecord);
                 return Ok("game over");
             }
         }
