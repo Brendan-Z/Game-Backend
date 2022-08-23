@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "8uvxisZVlmh32nS6UVxrxxpSYhENGjePwpOZiA4YHG+g31omzcOMU5nXyaV6oYg6qdyG7b4J4tfzMjZBY32KvA==",
+  "dgSpecHash": "8mv08mzR6xOuZxRXTZ0H/zJo9T8ZeK5dO1uKEu9NJVgsE03149SBuFnjOrJnAxwoQ2yzBUjzIOa+D968qcWCpA==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Brend\\Downloads\\A2-template\\A2-template\\A2.csproj",
+  "projectFilePath": "E:\\Git\\a2-335-server-side\\A2.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Brend\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
     "C:\\Users\\Brend\\.nuget\\packages\\microsoft.data.sqlite.core\\6.0.6\\microsoft.data.sqlite.core.6.0.6.nupkg.sha512",

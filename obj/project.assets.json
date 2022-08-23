@@ -1475,11 +1475,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Brend\\Downloads\\A2-template\\A2-template\\A2.csproj",
+      "projectUniqueName": "E:\\Git\\a2-335-server-side\\A2.csproj",
       "projectName": "A2",
-      "projectPath": "C:\\Users\\Brend\\Downloads\\A2-template\\A2-template\\A2.csproj",
+      "projectPath": "E:\\Git\\a2-335-server-side\\A2.csproj",
       "packagesPath": "C:\\Users\\Brend\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Brend\\Downloads\\A2-template\\A2-template\\obj\\",
+      "outputPath": "E:\\Git\\a2-335-server-side\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Brend\\AppData\\Roaming\\NuGet\\NuGet.Config",
