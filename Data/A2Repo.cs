@@ -1,5 +1,6 @@
 using Microsoft.EntityFrameworkCore.ChangeTracking;
 using A2.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace A2.Data
 {
@@ -45,11 +46,11 @@ namespace A2.Data
 
             if (game == null)
             {
-                GameRecord newGame = new() { 
-                    GameId = Guid.NewGuid().ToString(), 
-                    State = "wait", 
-                    Player1 = username, 
-                    Player2 = null, LastMovePlayer1 = null, 
+                GameRecord newGame = new() {
+                    GameId = Guid.NewGuid().ToString(),
+                    State = "wait",
+                    Player1 = username,
+                    Player2 = null, LastMovePlayer1 = null,
                     LastMovePlayer2 = null };
 
                 EntityEntry<GameRecord> e = _dbContext.GameRecords.Add(newGame);
@@ -70,6 +71,20 @@ namespace A2.Data
             }
         }
 
+        public bool GetUserActiveGame(String username)
+        {
+            if (_dbContext.GameRecords.Any(e => e.Player1 == username))
+            {
+                return true;
+            }
+            else if (_dbContext.GameRecords.Any(e => e.Player2 == username))
+            {
+                return true;
+            }
+            else
+
+            return false;
+        }
         public GameRecord AddToGameRecord(GameRecord gameRecord)
         {
             EntityEntry<GameRecord> e = _dbContext.GameRecords.Add(gameRecord);

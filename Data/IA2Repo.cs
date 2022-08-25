@@ -10,6 +10,7 @@ namespace A2.Data
         public bool UserExists(User user);
         public GameRecord PairingUser(string username);
         public IEnumerable<GameRecord> GetGameRecords();
+        public bool GetUserActiveGame(String username);
         public GameRecord AddToGameRecord(GameRecord gameRecord);
         public GameRecord GetGameById(string id);
         public void UpdateGameRecord(GameRecord gameRecord);

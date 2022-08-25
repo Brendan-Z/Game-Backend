@@ -202,17 +202,18 @@ namespace A2.Controllers
 
             GameRecord gameRecord = _repository.GetGameById(gameId);
 
+            // If no game record in exists then it should return no such gameID.
             if (gameRecord == null)
             {
                 return Ok("no such gameId");
             }
+            else if (!_repository.GetUserActiveGame(username))
+            {
+                return Ok("You have not started a game");
+            }
             else if (!gameRecord.Player1.Equals(username) && !gameRecord.Player2.Equals(username))
             {
                 return Ok("not your game id");
-            }
-            else if (gameRecord.State.Equals("wait") && gameRecord.Player1.Equals(username))
-            {
-                return Ok("You have not started a game.");
             }
             else
             {
