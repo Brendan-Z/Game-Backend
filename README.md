@@ -1,2 +1,2 @@
-# a2-335-server-side
-assignment 2 for SOFTENG 335
+# Backend Server Side
+For SOFTENG 335 Course
